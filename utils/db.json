@@ -1,0 +1,20 @@
+{
+    "names":[
+        {
+            "id":1,
+            "name":"Naeem"
+        },
+        {
+            "id":2,
+            "name":"Shankar"
+        },
+        {
+            "id":1,
+            "name":"Praneeth"
+        },
+        {
+            "id":1,
+            "name":"Abhishek"
+        }
+    ]
+}

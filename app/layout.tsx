@@ -1,10 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Gulzar } from 'next/font/google'
 import QueryProvider from './components/QueryProvider'
 import NextAuthProvider from './components/NextAuthProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const Reem = Gulzar({weight:"400",subsets:["arabic"]})
 
 export const metadata: Metadata = {
   title: 'Exploring React Query',
@@ -18,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <NextAuthProvider>
       <QueryProvider>
-      <body className={inter.className}>{children}</body>
-      </QueryProvider>
+      <NextAuthProvider>
+      <body className={Reem.className}>{children}</body>
       </NextAuthProvider>
+      </QueryProvider>
     </html>
   )
 }

@@ -13,7 +13,7 @@ export const authOptions:NextAuthOptions = {providers:[CredentialsProvider({
     },
     async authorize(credentials, req) {
       // Add logic here to look up the user from the credentials supplied
-      const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
+      const user = { id: "1", name: "J Smith", email: "jsmith@example.com",role:"admin" }
 
       if (user) {
         // Any object returned will be saved in `user` property of the JWT

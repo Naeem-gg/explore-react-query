@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
+import DateInput from "@/app/components/DateInput"
 const getDate = async()=> {
   const currentDate = new Date();
   const day = currentDate.getDate().toString().padStart(2, '0');
@@ -16,8 +16,9 @@ const page = async() => {
   const date = await getDate()
   return (
     <div className='flex flex-col'>
-      <h1> {date.data.hijri.day} {date.data.hijri.month.ar} </h1>
-      <Link href="/show">Fetch Data</Link>
+      <h1 className=''>Today:  {date.data.hijri.day} {date.data.hijri.month.ar} </h1>
+      <DateInput />
+      <Link href="/test">Show sample</Link>
     </div>
   )
 }

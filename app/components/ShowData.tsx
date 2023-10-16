@@ -1,16 +1,14 @@
 "use client"
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import React from 'react'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+
 
 const ShowData = () => {
-    const {isLoading,data,error,isError} = useQuery({queryKey:['shows'],queryFn:async()=>{
-        const res = await axios.get("http://localhost:5000/names")
-        const data = res.data
-        return data
-    }})
+    const {isLoading,data,error,isError} = useQuery({queryKey:['shows'],queryFn:getData})
     if (isLoading) return 'Loading...'
-  if (isError) return 'An error has occurred: ' 
+  
+  if (isError) return <h1>An error has occurred</h1> 
 
   return (
     <div>
@@ -22,3 +20,9 @@ const ShowData = () => {
 }
 
 export default ShowData
+
+const getData = async()=>{
+  const res = await axios.get("http://localhost:5000/names")
+        const data = res.data
+        return data
+}

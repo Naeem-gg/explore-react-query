@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-const getDate = async ()=>{
-  const data = await fetch("http://api.aladhan.com/v1/gToH/16-10-2023")
+const getDate = async()=> {
+  const currentDate = new Date();
+  const day = currentDate.getDate().toString().padStart(2, '0');
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const year = currentDate.getFullYear();
+  const formattedDate = `${day}-${month}-${year}`;
+  const data = await fetch(`http://api.aladhan.com/v1/gToH/${formattedDate}`)
   const date = await data.json()
   return date
 }

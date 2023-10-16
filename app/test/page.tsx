@@ -5,7 +5,7 @@ import SalahTimeTable from '@/app/components/SalahTimeTable';
 const masjids = [
   {
     id: 1,
-    name: 'Masjid A',
+    name: 'Shahi ',
     fajr: '5:00 AM',
     dhuhr: '1:00 PM',
     asr: '4:30 PM',

@@ -14,9 +14,11 @@ const getDate = async()=> {
 
 const page = async() => {
   const date = await getDate()
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   return (
     <div className='flex flex-col'>
       <h1 className=''>Today:  {date.data.hijri.day} {date.data.hijri.month.ar} </h1>
+      <h1>Your timezone:{timezone}</h1>
       <DateInput />
       <Link href="/test">Show sample</Link>
     </div>

@@ -1,7 +1,6 @@
 "use client"
 // DateInput.js
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 const DateInput = ({ onDateSubmit }:any) => {
   const [inputDate, setInputDate] = useState('');
 
@@ -13,7 +12,14 @@ const DateInput = ({ onDateSubmit }:any) => {
     event.preventDefault();
     onDateSubmit(inputDate);
   };
-
+  useEffect(()=>{
+    if('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(({ coords }) => {
+          const { latitude, longitude } = coords;
+          console.log({ latitude, longitude })
+      })
+  }
+  },[])
   return (
     <form className="flex items-center mb-4" onSubmit={handleSubmit}>
       <label htmlFor="dateInput" className="mr-2">

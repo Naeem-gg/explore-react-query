@@ -1,28 +1,27 @@
-import Link from 'next/link'
-import React from 'react'
-import DateInput from "@/app/components/DateInput"
-const getDate = async()=> {
-  const currentDate = new Date();
-  const day = currentDate.getDate().toString().padStart(2, '0');
-  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-  const year = currentDate.getFullYear();
-  const formattedDate = `${day}-${month}-${year}`;
-  const data = await fetch(`http://api.aladhan.com/v1/gToH/${formattedDate}`)
-  const date = await data.json()
-  return date
-}
+import Link from "next/link";
+import React from "react";
 
-const page = async() => {
-  const date = await getDate()
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+const page = () => {
   return (
-    <div className='flex flex-col'>
-      <h1 className=''>Today:  {date.data.hijri.day} {date.data.hijri.month.ar} </h1>
-      <h1>Your timezone:{timezone}</h1>
-      <DateInput />
-      <Link href="/test">Show sample</Link>
+    <div className="h-screen w-screen flex justify-around items-center">
+      <Link
+        href="/list-table"
+        className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+      >
+        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          Home 1
+        </span>
+      </Link>
+      <Link
+        href="/list-names"
+        className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+      >
+        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          Home 2
+        </span>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

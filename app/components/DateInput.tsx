@@ -1,35 +1,35 @@
 "use client"
-// DateInput.js
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-const DateInput = ({ onDateSubmit }:any) => {
+
+
+const HijriDate = ({date}:any) => {
+
   const [inputDate, setInputDate] = useState('');
-
-  const handleInputChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-    setInputDate(event.target.value);
-  };
-
+  const router = useRouter()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onDateSubmit(inputDate);
+    console.log(inputDate)
+    const data = inputDate.split('-')
+    const userDate = `${data[2]}-${data[1]}-${data[0]}`
+    console.log(userDate)
+    console.log(date)
+    router.push(`/?date=${userDate}`)
   };
-  useEffect(()=>{
-    if('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-          const { latitude, longitude } = coords;
-          console.log({ latitude, longitude })
-      })
-  }
-  },[])
+
+
   return (
-    <form className="flex items-center mb-4" onSubmit={handleSubmit}>
+    <div className="max-w-md mx-auto bg-white p-6 rounded shadow-lg">
+      <h2 className="text-xl font-bold mb-4">Hijri Date Converter</h2>
+      <form className="flex items-center mb-4" onSubmit={handleSubmit}>
       <label htmlFor="dateInput" className="mr-2">
         Enter a date:
       </label>
       <input
-        type="text"
+        type="date"
         id="dateInput"
         value={inputDate}
-        onChange={handleInputChange}
+        onChange={e=>setInputDate(e.target.value)}
         placeholder="dd-mm-yyyy"
         className="border border-gray-300 rounded px-2 py-1"
       />
@@ -37,36 +37,9 @@ const DateInput = ({ onDateSubmit }:any) => {
         Submit
       </button>
     </form>
-  );
-};
-
-
-const HijriDate = () => {
-  const [hijriDate, setHijriDate] = useState('');
-
-  const fetchHijriDate = async (gregorianDate:string) => {
-    try {
-      const response = await fetch(
-        `http://api.aladhan.com/v1/gToH/${gregorianDate}`
-      );
-      const data = await response.json();
-      setHijriDate(data.data.hijri.date);
-    } catch (error) {
-      console.error('Error fetching Hijri date:', error);
-    }
-  };
-
-  const handleDateSubmit = (gregorianDate:string) => {
-    fetchHijriDate(gregorianDate);
-  };
-
-  return (
-    <div className="max-w-md mx-auto bg-white p-6 rounded shadow-lg">
-      <h2 className="text-xl font-bold mb-4">Hijri Date Converter</h2>
-      <DateInput onDateSubmit={handleDateSubmit} />
-      {hijriDate && (
+      {true && (
         <p className="text-lg mt-4">
-          <span className="font-bold">Hijri Date:</span> {hijriDate}
+          <span className="font-bold">Hijri Date:</span> {true}
         </p>
       )}
     </div>
@@ -75,3 +48,12 @@ const HijriDate = () => {
 
 export default HijriDate;
 
+
+      // useEffect(()=>{
+      //   if('geolocation' in navigator) {
+      //     navigator.geolocation.getCurrentPosition(({ coords }) => {
+      //         const { latitude, longitude } = coords;
+      //         console.log({ latitude, longitude })
+      //     })
+      // }
+      // },[])

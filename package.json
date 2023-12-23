@@ -3,32 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve-db": "json-server --watch utils/db.json --port 5000"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.36.1",
-    "@tanstack/react-query-devtools": "^4.36.1",
-    "axios": "^1.5.1",
-    "json-server": "^0.17.4",
-    "next": "13.5.4",
-    "next-auth": "^4.23.2",
+    "@nextui-org/react": "^2.2.9",
+    "framer-motion": "^10.16.16",
+    "next": "14.0.4",
+    "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^4.36.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10",
+    "autoprefixer": "^10.0.1",
     "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint-config-next": "14.0.4",
     "postcss": "^8",
-    "tailwindcss": "^3",
+    "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import ShowData from '../components/ShowData'
+import SearchableList from '../components/searching'
 
 const page = () => {
   return (
     <div>
-      <ShowData />
+      <SearchableList />
     </div>
   )
 }

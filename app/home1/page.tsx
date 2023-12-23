@@ -1,5 +1,7 @@
 import React from 'react'
+import {Amiri} from "next/font/google"
 import SalahTimeTable from '../components/SalahTimeTable'
+const inter = Amiri({weight:"400" })
 
 const page = () => {
     const data = [
@@ -13,7 +15,7 @@ const page = () => {
   ]
   return (
     <div className='h-screen w-screen p-4'>
-    <div className="w-screen h-1/6 text-center p-4 text-3xl">إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ </div>
+    <div className={`${inter.className} w-screen h-1/6 text-center p-4 text-3xl`}>إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ </div>
     <SalahTimeTable masjids={data}/>
     </div>
   )

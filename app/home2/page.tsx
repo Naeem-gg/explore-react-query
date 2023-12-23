@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchableList from '../components/searching'
 import { Amiri } from 'next/font/google'
-const inter = Amiri({weight:"400" })
+const inter = Amiri({subsets:['arabic'],weight:"400" })
 const page = () => {
   return (
     <div className='h-screen w-screen'>

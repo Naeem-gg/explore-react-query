@@ -1,7 +1,7 @@
 import React from 'react'
 import {Amiri} from "next/font/google"
 import SalahTimeTable from '../components/SalahTimeTable'
-const inter = Amiri({weight:"400" })
+const inter = Amiri({subsets:['arabic'],weight:"400" })
 
 const page = () => {
     const data = [

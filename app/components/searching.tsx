@@ -48,7 +48,7 @@ const SearchableList = ({data}:{data:Item[]}) => {
       />
       {items.length > 0 ? (
         items.map((item) => (
-          <Link href={`/masjid/${item.name.split(" ")[0]}`} key={item.id} className="bg-gray-200 p-3 mb-2 rounded-md hover:bg-gray-400 flex justify-between">
+          <Link href={`/masjid/${item.name}`} key={item.id} className="bg-gray-200 p-3 mb-2 rounded-md hover:bg-gray-400 flex justify-between">
             <span>{item.name}</span> <span>{convertTime(item.isha)}</span>
           </Link>
         ))

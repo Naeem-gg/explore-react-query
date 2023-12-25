@@ -1,16 +1,9 @@
 "use client"
 import React from 'react';
+import { convertTime } from '../utils/funs';
 
-interface PrayerTiming {
-  name: string;
-  time: string;
-}
 
-interface PrayerTimingsProps {
-  timings: PrayerTiming[];
-}
-
-const PrayerTimings: React.FC<PrayerTimingsProps> = ({ timings }) => {
+const PrayerTimings = ({ timings }:any) => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
       <h2 className="text-gray-800 dark:text-white text-2xl font-semibold mb-4 text-center">
@@ -24,12 +17,32 @@ const PrayerTimings: React.FC<PrayerTimingsProps> = ({ timings }) => {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-300 dark:divide-gray-600">
-          {timings.map((timing, index) => (
-            <tr key={index}>
-              <td className="py-2 px-4">{timing.name}</td>
-              <td className="py-2 px-4">{timing.time}</td>
+          {/* {timings.map((timing, index) => ( */}
+            <tr >
+              <td className="py-2 px-4">Fajr</td>
+              <td className="py-2 px-4">{convertTime(timings.fajr)}</td>
             </tr>
-          ))}
+            <tr >
+              <td className="py-2 px-4">Zohr</td>
+              <td className="py-2 px-4">{convertTime(timings.zohr)}</td>
+            </tr>
+            <tr >
+              <td className="py-2 px-4">Asr</td>
+              <td className="py-2 px-4">{convertTime(timings.asr)}</td>
+            </tr>
+            <tr >
+              <td className="py-2 px-4">Maghrib</td>
+              <td className="py-2 px-4">{convertTime(timings.maghrib)}</td>
+            </tr>
+            <tr >
+              <td className="py-2 px-4">Isha</td>
+              <td className="py-2 px-4">{convertTime(timings.isha)}</td>
+            </tr>
+            <tr >
+              <td className="py-2 px-4">Juma</td>
+              <td className="py-2 px-4">{convertTime(timings.juma)}</td>
+            </tr>
+          {/* ))} */}
         </tbody>
       </table>
     
@@ -37,19 +50,11 @@ const PrayerTimings: React.FC<PrayerTimingsProps> = ({ timings }) => {
   );
 };
 
-const timingsData: PrayerTiming[] = [
-  { name: 'Fajr', time: '5:30 AM' },
-  { name: 'Dhuhr', time: '1:15 PM' },
-  { name: 'Asr', time: '4:30 PM' },
-  { name: 'Maghrib', time: '6:45 PM' },
-  { name: 'Isha', time: '8:00 PM' },
-  { name: 'Juma', time: '1:30 PM' },
-];
 
-const App = () => {
+const App = ({data}:any) => {
   return (
     <div className="flex justify-center items-center h-screen">
-      <PrayerTimings timings={timingsData} />
+      <PrayerTimings timings={data} />
     </div>
   );
 };

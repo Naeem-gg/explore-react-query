@@ -1,13 +1,12 @@
-"use client"
 import React from 'react';
 import { convertTime } from '../utils/funs';
 
-
-const PrayerTimings = ({ timings }:any) => {
+const SingleTable = ({timings}:any) => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div className="flex justify-center items-center h-screen">
+      <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
       <h2 className="text-gray-800 dark:text-white text-2xl font-semibold mb-4 text-center">
-        Prayer Timings
+        Prayer Timings 
       </h2>
       <table className="min-w-full divide-y divide-gray-300 dark:divide-gray-600">
         <thead className="bg-gray-200 dark:bg-gray-700">
@@ -20,43 +19,35 @@ const PrayerTimings = ({ timings }:any) => {
           {/* {timings.map((timing, index) => ( */}
             <tr >
               <td className="py-2 px-4">Fajr</td>
-              <td className="py-2 px-4">{convertTime(timings.fajr)}</td>
+              <td className="py-2 px-4">{convertTime(timings.fajr.split(" ")[0])} {timings.fajr.split(" ")[1]}</td>
             </tr>
             <tr >
               <td className="py-2 px-4">Zohr</td>
-              <td className="py-2 px-4">{convertTime(timings.zohr)}</td>
+              <td className="py-2 px-4">{convertTime(timings.zohr.split(" ")[0])} {timings.zohr.split(" ")[1]}</td>
             </tr>
             <tr >
               <td className="py-2 px-4">Asr</td>
-              <td className="py-2 px-4">{convertTime(timings.asr)}</td>
+              <td className="py-2 px-4">{convertTime(timings.asr.split(" ")[0])} {timings.asr.split(" ")[1]}</td>
             </tr>
             <tr >
               <td className="py-2 px-4">Maghrib</td>
-              <td className="py-2 px-4">{convertTime(timings.maghrib)}</td>
+              <td className="py-2 px-4">{convertTime(timings.maghrib.split(" ")[0])} {timings.maghrib.split(" ")[1]}</td>
             </tr>
             <tr >
               <td className="py-2 px-4">Isha</td>
-              <td className="py-2 px-4">{convertTime(timings.isha)}</td>
+              <td className="py-2 px-4">{convertTime(timings.isha.split(" ")[0])} {timings.isha.split(" ")[1]}</td>
             </tr>
             <tr >
               <td className="py-2 px-4">Juma</td>
-              <td className="py-2 px-4">{convertTime(timings.juma)}</td>
+              <td className="py-2 px-4">{convertTime(timings.juma.split(" ")[0])} {timings.juma.split(" ")[1]}</td>
             </tr>
           {/* ))} */}
         </tbody>
       </table>
     
     </div>
-  );
-};
-
-
-const App = ({data}:any) => {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <PrayerTimings timings={data} />
     </div>
   );
 };
 
-export default App;
+export default SingleTable;

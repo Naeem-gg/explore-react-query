@@ -18,7 +18,6 @@ const page = async() => {
 
   const data = await getData()
   if(data === undefined)return
-  console.log(data)
   return (
     <div className='h-screen w-screen'>
       <div className={`${inter.className} w-screen h-1/6 text-center p-4 text-3xl`}>إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ </div>

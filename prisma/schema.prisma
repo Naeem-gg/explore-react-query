@@ -10,6 +10,9 @@ datasource db {
 model Time {
   id        String   @id @default(cuid())
   name      String   @unique
+  route     String   @unique
+  password  Int      @unique
+  mobile    Float    @unique
   fajr      String
   zohr      String
   asr       String

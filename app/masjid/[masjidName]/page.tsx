@@ -2,9 +2,9 @@ import SingleTable from '@/app/masjid/SingleTable'
 import { convertTime } from '@/app/utils/funs'
 import prisma from '@/prisma/client'
 
-const getData = async(masjidName:string)=>{
+const getData = async(masjidRoute:string)=>{
   try {
-    const res = await prisma.time.findUnique({where:{name:masjidName}})
+    const res = await prisma.time.findUnique({where:{route:masjidRoute}})
     
     return res
   } catch (error) {

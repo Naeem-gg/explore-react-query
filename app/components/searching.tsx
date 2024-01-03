@@ -62,11 +62,11 @@ const SearchableList = ({data}:{data:Item[]}) => {
           <Link href={`/masjid/${item.route}`} key={item.id} className="bg-gray-200 p-3 mb-2 rounded-md hover:bg-gray-400 flex justify-between">
             <span>{_.startCase(item.name)} Masjid</span> 
             {currentSalah==="fajr" &&<span className='text-green-700'>{"Fajr"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
-            {currentSalah==="zohr" &&<span className='text-green-700'>{"Zohr"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
-            {currentSalah==="asr" &&<span className='text-green-700'>{"Asr"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
-            {currentSalah==="maghrib" &&<span className='text-green-700'>{"Maghrib"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
-            {currentSalah==="isha" &&<span className='text-green-700'>{"Isha"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
-            {currentSalah==="juma" &&<span className='text-green-700'> {"Juma"} {convertTime(item.fajr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
+            {currentSalah==="zohr" &&<span className='text-green-700'>{"Zohr"} {convertTime(item.zohr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
+            {currentSalah==="asr" &&<span className='text-green-700'>{"Asr"} {convertTime(item.asr.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
+            {currentSalah==="maghrib" &&<span className='text-green-700'>{"Maghrib"} {convertTime(item.maghrib.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
+            {currentSalah==="isha" &&<span className='text-green-700'>{"Isha"} {convertTime(item.isha.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
+            {currentSalah==="juma" &&<span className='text-green-700'> {"Juma"} {convertTime(item.juma.split(" ")[0])}{item.asr.split(" ")[1]}</span>}
           </Link>
         ))
       ) : (

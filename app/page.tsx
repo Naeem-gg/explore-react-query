@@ -15,11 +15,8 @@ const getData = async()=>{
   }
 }
 const getDate = async()=>{
-  let currentSalah = ''
-  const currentDate = new Date();
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-  const currentTime = hours * 100 + minutes;
+  let currentSalah = '' 
+  const currentTime = new Date().getHours() * 100 + new Date().getMinutes();
 
   if (currentTime >= 0 && currentTime < 430) {
     currentSalah = "isha";

@@ -3,10 +3,11 @@ import { Amiri } from 'next/font/google'
 import prisma from '@/prisma/client'
 import SearchableList from '@/app/components/searching'
 import {unstable_noStore as noStore} from 'next/cache'
+import moment from 'moment-timezone';
+moment.tz.setDefault('Asia/Kolkata');
 const inter = Amiri({subsets:['arabic'],weight:"400" })
 
 const getData = async()=>{
-  noStore()
   try {
     
     const res = await prisma.time.findMany({})
@@ -17,7 +18,8 @@ const getData = async()=>{
 }
 const getDate = async()=>{
   let currentSalah = '' 
-  const currentTime = new Date().getHours() * 100 + new Date().getMinutes();
+  // const currentTime = new Date().getHours() * 100 + new Date().getMinutes();
+  const currentTime = parseInt(moment().format('HHmm'));
 
   if (currentTime >= 0 && currentTime < 430) {
     currentSalah = "isha";
@@ -37,6 +39,7 @@ const getDate = async()=>{
 const page = async() => {
 
   const data = await getData()
+  noStore()
   const {currentSalah,currentTime} = await getDate()
   if(data === undefined)return
   return (

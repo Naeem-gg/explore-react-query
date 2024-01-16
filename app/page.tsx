@@ -2,10 +2,11 @@ import React from 'react'
 import { Amiri } from 'next/font/google'
 import prisma from '@/prisma/client'
 import SearchableList from '@/app/components/searching'
-
+import {unstable_noStore as noStore} from 'next/cache'
 const inter = Amiri({subsets:['arabic'],weight:"400" })
 
 const getData = async()=>{
+  noStore()
   try {
     
     const res = await prisma.time.findMany({})
@@ -31,16 +32,16 @@ const getDate = async()=>{
   } else {
     currentSalah = "isha";
   }
-  
-  return currentSalah;
+  return {currentSalah,currentTime};
 }
 const page = async() => {
 
   const data = await getData()
-  const currentSalah = await getDate()
+  const {currentSalah,currentTime} = await getDate()
   if(data === undefined)return
   return (
     <div className='h-screen w-screen'>
+      <h1>{currentSalah},{currentTime}</h1>
       <div className={`${inter.className} w-screen h-1/6 text-center p-4 text-3xl`}>إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ </div>
       <SearchableList data={data} currentSalah={currentSalah}/>
     </div>
